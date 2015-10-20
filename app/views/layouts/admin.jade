@@ -3,4 +3,8 @@ html
     block title
       title NodeFlow - Administration
   body
+    if flash
+      for message in flash
+        a.alert(class='alert-' + message.type)
+          p= message.message
     block content
