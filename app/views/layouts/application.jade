@@ -3,4 +3,13 @@ html
     block title
       title NodeFlow - Home
   body
+    if alert && alert.length
+      div.alert(class='alert')
+        p= alert
+
+    if !req.isAuthenticated()
+      a(href='/signup') Sign up
+    else
+      a(href='/logout') Log Out
+
     block content
