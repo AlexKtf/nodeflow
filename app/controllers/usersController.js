@@ -1,15 +1,17 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-exports.login = function (req, res) {
-  res.render('home/login');
+// Display sign in form
+exports.signin = function (req, res) {
+  res.render('home/signin');
 };
 
+// Display sign up form
 exports.signup = function (req, res) {
   res.render('home/signup');
 };
 
-
+// Sign up user
 exports.create = function (req, res) {
   var user = new User(req.body);
   user.save(function (err) {
@@ -25,23 +27,21 @@ exports.create = function (req, res) {
     }
 
     req.logIn(user, function(err) {
-      if (err) req.flash('alert', 'Sorry! We are not able to log you in!');
+      if (err) { return next(err); }
       return res.redirect('/');
     });
   });
 };
 
+// Sign in user
+exports.session = function (req, res) {
+  res.redirect('/');
+};
+
+// Logout user
 exports.logout = function (req, res) {
   req.logout();
   req.flash('info', 'You are disconnected');
   res.redirect('/');
 };
 
-exports.session = login;
-
-function login (req, res) {
-  console.log(req);
-  var redirectTo = req.session.returnTo ? req.session.returnTo : '/';
-  delete req.session.returnTo;
-  res.redirect(redirectTo);
-}

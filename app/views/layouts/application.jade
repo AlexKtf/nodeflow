@@ -3,12 +3,11 @@ html
     block title
       title NodeFlow - Home
   body
-    if alert && alert.length
-      div.alert(class='alert')
-        p= alert
+    include ../includes/flash.jade
 
     if !req.isAuthenticated()
       a(href='/signup') Sign up
+      a(href='/signin') Sign in
     else
       a(href='/logout') Log Out
 

@@ -26,7 +26,7 @@ UserSchema
 
 UserSchema.path('email').validate(function (email) {
   return validator.isEmail(email);
-}, 'Email must be a valid email adress');
+}, 'Email must be a valid email address');
 
 UserSchema.path('email').validate(function (email, fn) {
   var User = mongoose.model('User');
@@ -63,16 +63,6 @@ UserSchema.methods = {
     } catch (err) {
       return '';
     }
-  }
-};
-
-/* Static methods */
-
-UserSchema.statics = {
-
-  load: function (options, cb) {
-    options.select = options.select || 'email';
-    this.findOne(options.criteria).select(options.select).exec(cb);
   }
 };
 

@@ -1,0 +1,12 @@
+extends ./layouts/application.jade
+
+block title
+  title NodeFlow - 404
+
+block content
+  h1 500 - Oops, An error occured
+
+
+  if env == 'development'
+    pre
+      {{ error }}

@@ -1,0 +1,19 @@
+if errors && errors.length
+  div.flash(class='errors')
+    each error in errors
+      p= error
+
+if info && info.length
+  div.flash(class='info')
+    each inf in info
+      p= inf
+
+if success && success.length
+  div.flash(class='success')
+    each succ in success
+      p= succ
+
+if warning && warning.length
+  div.flash(class='warning')
+    each warn in warning
+      p= warn

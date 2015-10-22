@@ -9,13 +9,24 @@ module.exports = function (app, passport) {
   app.post('/users/register', usersController.create);
 
   // Sign in
-  app.get('/login', usersController.login);
-  app.post('/admin/session',
+  app.get('/signin', usersController.signin);
+  app.post('/users/session',
     passport.authenticate('local', {
-      failureRedirect: '/admin/login',
-      failureFlash: true
+      successRedirect: '/',
+      failureRedirect: '/signin',
+      failureFlash: 'Invalid user or password'
     }), usersController.session);
 
   // Log out
   app.get('/logout', usersController.logout);
+
+
+  // Handle 404/500
+  app.use(function (err, req, res, next) {
+    if (err.message && (~err.message.indexOf('not found') || (~err.message.indexOf('Cast to ObjectId failed')))) {
+      return res.status(404).render('404', { url: req.originalUrl, error: 'Not found' });
+    }
+    console.error(err.stack);
+    res.status(500).render('500', { error: err.stack });
+  });
 };
