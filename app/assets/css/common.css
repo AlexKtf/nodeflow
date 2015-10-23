@@ -124,3 +124,13 @@ h2 {
 #post-form textarea {
   height: 200px;
 }
+
+#admin .panel {
+  text-align: center;
+}
+#admin .panel-heading {
+  font-size: 2em;
+}
+#admin .panel-body {
+  font-size: 2em;
+}
