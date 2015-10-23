@@ -14,11 +14,11 @@ var flash = require('connect-flash');
 var helpers = require('view-helpers');
 
 var env = process.env.NODE_ENV || 'development';
+var port = process.env.PORT || 3000;
+var mongo_uri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test';
 
 var app = express();
-var port = process.env.PORT || 3000;
 
-var mongo_uri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test';
 
 mongoose.connect(mongo_uri);
 

@@ -8,9 +8,8 @@ module.exports = new GithubStrategy({
     callbackURL: process.env.GITHUB_CALLBACK
   },
   function(accessToken, refreshToken, profile, done) {
-    User.findOne({ githubId: profile.id }, function (err, user) {
+    User.findOne({ github_id: profile.id }, function (err, user) {
       if (err) { return done(err, user); }
-
       if (!user) {
         user = new User({
           email: profile.emails[0].value,
