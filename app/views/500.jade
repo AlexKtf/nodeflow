@@ -1,11 +1,13 @@
 extends ./layouts/application.jade
 
 block title
-  title NodeFlow - 404
+  title NodeFlow - 500
 
 block content
-  h1 500 - Oops, An error occured
 
+  .jumbotron
+    h1 500 - Oops, An error occured
+    a(href='/') Comeback to Home
 
   if env == 'development'
     pre
