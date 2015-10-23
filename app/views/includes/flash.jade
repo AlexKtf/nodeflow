@@ -1,19 +1,15 @@
 if errors && errors.length
   div.flash(class='errors')
-    each error in errors
-      p= error
+    p= errors
 
 if info && info.length
   div.flash(class='info')
-    each inf in info
-      p= inf
+    p= info
 
 if success && success.length
   div.flash(class='success')
-    each succ in success
-      p= succ
+    p= success
 
 if warning && warning.length
   div.flash(class='warning')
-    each warn in warning
-      p= warn
+    p= warning

@@ -26,7 +26,7 @@ app.use(compression({ threshold: 512 }));
 require('./app/models/user.js');
 require('./config/passport')(passport);
 
-app.use('/assets', express.static(__dirname + './app/assets'));
+app.use('/assets', express.static(__dirname + '/app/assets'));
 
 app.set('views', './app/views');
 app.set('view engine', 'jade');

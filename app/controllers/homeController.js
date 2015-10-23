@@ -1,8 +1,3 @@
 exports.home = function (req, res) {
-  res.render('home/home',
-    {
-      title: 'Hey',
-      message: 'Hello there!'
-    }
-  );
+  res.render('home/home', { errors: req.flash('errors')} );
 };

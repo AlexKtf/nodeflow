@@ -1,15 +1,11 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-// Display sign in form
-exports.signin = function (req, res) {
-  res.render('home/signin');
+// Display sign up / sign in form
+exports.register = function (req, res) {
+  res.render('home/register');
 };
 
-// Display sign up form
-exports.signup = function (req, res) {
-  res.render('home/signup');
-};
 
 // Sign up user
 exports.create = function (req, res) {
@@ -20,14 +16,15 @@ exports.create = function (req, res) {
       for (var field in err.errors) {
         errors.push(err.errors[field].message);
       }
-      return res.render('home/signup', {
-        errors: errors,
-        user: user
-      });
+      return res.render('home/register', { errors: errors[0] });
     }
 
     req.logIn(user, function(err) {
-      if (err) { return next(err); }
+      if (err) {
+        req.flash('errors', 'Oops, An error occured');
+      } else {
+        req.flash('success', 'Welcome! You can post an article');
+      }
       return res.redirect('/');
     });
   });

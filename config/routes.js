@@ -4,16 +4,18 @@ var usersController = require('../app/controllers/usersController');
 module.exports = function (app, passport) {
   app.get('/', homeController.home);
 
+  // Display SignIn/SignUp form
+  app.get('/register', usersController.register);
+
   // Sign up
-  app.get('/signup', usersController.signup);
   app.post('/users/register', usersController.create);
 
   // Sign in
-  app.get('/signin', usersController.signin);
   app.post('/users/session',
     passport.authenticate('local', {
       successRedirect: '/',
-      failureRedirect: '/signin',
+      failureRedirect: '/register',
+      successFlash: 'You are connected',
       failureFlash: 'Invalid user or password'
     }), usersController.session);
 

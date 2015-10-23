@@ -1,0 +1,35 @@
+extends ../layouts/application.jade
+
+block title
+  title NodeFlow
+
+block content
+  #register-form.col-sm-12
+    .col-sm-5
+      h2 Sign In
+      form.form-horizontal(action='/users/session', method='post', role='form')
+        .form-group
+          label.col-sm-3.control-label(for='email') Email
+          .col-sm-9
+            input#email.form-control(type='email', placeholder='Email', name='email')
+        .form-group
+          label.col-sm-3.control-label(for='password') Password
+          .col-sm-9
+            input#password.form-control(type='password', placeholder='Password', name='password')
+        .form-group.actions
+          button.btn(type='submit') Sign in
+    .col-sm-1
+    .col-sm-1.separator
+    .col-sm-5
+      h2 Sign Up
+      form.form-horizontal(action='/users/register', method='post', role='form')
+        .form-group
+          label.col-sm-3.control-label(for='email') Email
+          .col-sm-9
+            input#email.form-control(type='email', placeholder='Email', name='email')
+        .form-group
+          label.col-sm-3.control-label(for='password') Password
+          .col-sm-9
+            input#password.form-control(type='password', placeholder='Password', name='password')
+        .form-group.actions
+          button.btn(type='submit') Sign Up
