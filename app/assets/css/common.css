@@ -1,0 +1,122 @@
+@font-face {
+    font-family: Lato;
+    src: url(http://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic);
+}
+
+@media (min-width: 1200px) {
+  .container{
+      max-width: 970px;
+  }
+  .separator {
+    border-left: 1px solid black;
+    height: 250px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .separator {
+    border-top: 1px solid black;
+  }
+}
+
+body {
+  background: #f5f6f6;
+  font-family: Lato, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 3em;
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin: 20px 0 30px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.navbar-default{
+  background-color: #333;
+  border: none;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.navbar-default a {
+  color: #8CCC08 !important;
+}
+
+.navbar-default a:hover {
+  color: #ABF908 !important;
+}
+
+.flash {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+  text-align: center;
+  height: 50px;
+  padding-top: 13px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.errors {
+  background: #CC1717;
+}
+.info, .success {
+  background: #8CCC08;
+}
+
+.jumbotron {
+  text-align: center;
+  position: relative;
+  padding-top: 10px;
+  background-color: white;
+  color: #666 !important;
+}
+
+.jumbotron h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 3em;
+  margin-bottom: 30px;
+}
+
+.jumbotron span {
+  position: absolute;
+  color: #8CCC08;
+  top: 25px;
+  right: 25px;
+}
+
+.jumbotron span:hover {
+  cursor: pointer;
+  color: #ABF908;
+}
+
+#register-form {
+  margin-top: 50px;
+}
+
+.form-horizontal .control-label {
+  text-align: center;
+}
+#register-form .actions{
+  text-align: center;
+}
+#register-form .actions button{
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background-color: rgb(141, 206, 6);
+  border-color: rgb(141, 206, 6);
+  color: white;
+}
