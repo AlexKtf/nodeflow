@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 var local = require('./passport/local');
+var github = require('./passport/github');
 
 module.exports = function (passport) {
   passport.serializeUser(function(user, done) {
@@ -15,4 +16,5 @@ module.exports = function (passport) {
   });
 
   passport.use(local);
+  passport.use(github);
 };

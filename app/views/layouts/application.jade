@@ -13,6 +13,8 @@ html
           ul.nav.navbar-nav.navbar-right
             if !req.isAuthenticated()
               li
+                a(href='/auth/github') Sign In with GitHub
+              li
                 a(href='/register') Sign up / Sign In
             else
               li

@@ -8,7 +8,8 @@ var UserSchema = mongoose.Schema({
     email: { type: String },
     hashed_password: { type: String },
     salt: { type: String, default: '' },
-    is_admin: { type: Boolean, default: false }
+    is_admin: { type: Boolean, default: false },
+    github_id: { type: String, default: '' }
 });
 
 /* Virtual field */
@@ -39,6 +40,7 @@ UserSchema.path('email').validate(function (email, fn) {
 }, 'Email already exists');
 
 UserSchema.path('hashed_password').validate(function (hashed_password) {
+  if (skipValidation()) { return true; }
   return validator.isLength(this._password, 8);
 }, 'Password length must be superior to 8');
 
@@ -63,6 +65,9 @@ UserSchema.methods = {
     } catch (err) {
       return '';
     }
+  },
+  skipValidation: function() {
+    return this.github_id.length;
   }
 };
 

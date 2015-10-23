@@ -14,10 +14,20 @@ module.exports = function (app, passport) {
   app.post('/users/session',
     passport.authenticate('local', {
       successRedirect: '/',
-      failureRedirect: '/register',
       successFlash: 'You are connected',
+      failureRedirect: '/register',
       failureFlash: 'Invalid user or password'
     }), usersController.session);
+
+  // Sign in with GitHub
+  app.get('/auth/github', passport.authenticate('github'));
+  app.get('/auth/callback',
+  passport.authenticate('github', {
+    successRedirect: '/',
+    successFlash: 'You are connected',
+    failureRedirect: '/',
+    failureFlash: 'Oops, an error occured'
+  }), usersController.session);
 
   // Log out
   app.get('/logout', usersController.logout);

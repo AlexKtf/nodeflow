@@ -21,7 +21,9 @@
     "method-override": "^2.3.5",
     "mongoose": "^4.1.11",
     "passport": "^0.3.0",
+    "passport-github": "^1.0.0",
     "passport-local": "^1.0.0",
+    "passport-oauth2": "^1.1.2",
     "validator": "^4.1.0",
     "view-helpers": "^0.1.5"
   }
