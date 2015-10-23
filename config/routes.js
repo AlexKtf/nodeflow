@@ -1,5 +1,6 @@
 var homeController = require('../app/controllers/homeController');
 var usersController = require('../app/controllers/usersController');
+var adminController = require('../app/controllers/adminController');
 
 var auth = require('./authorization.js');
 
@@ -34,6 +35,10 @@ module.exports = function (app, passport) {
 
   // Log out
   app.get('/logout', auth.requireLogin, usersController.logout);
+
+
+  // Admin dashboard
+  app.get('/admin/dashboard', [auth.requireLogin, auth.isAdmin], adminController.dashboard);
 
 
   // Handle 404/500
