@@ -40,7 +40,7 @@ UserSchema.path('email').validate(function (email, fn) {
 }, 'Email already exists');
 
 UserSchema.path('hashed_password').validate(function (hashed_password) {
-  if (skipValidation()) { return true; }
+  if (this.skipValidation()) { return true; }
   return validator.isLength(this._password, 8);
 }, 'Password length must be superior to 8');
 
