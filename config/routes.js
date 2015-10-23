@@ -1,5 +1,6 @@
 var homeController = require('../app/controllers/homeController');
 var usersController = require('../app/controllers/usersController');
+var postsController = require('../app/controllers/postsController');
 var adminController = require('../app/controllers/adminController');
 
 var auth = require('./authorization.js');
@@ -35,6 +36,12 @@ module.exports = function (app, passport) {
 
   // Log out
   app.get('/logout', auth.requireLogin, usersController.logout);
+
+  // Display Article form
+  app.get('/posts/new', auth.requireLogin, postsController.newForm);
+
+  // Create Article
+  app.post('/posts/create', auth.requireLogin, postsController.create);
 
 
   // Admin dashboard

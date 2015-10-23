@@ -1,0 +1,24 @@
+extends ../layouts/application.jade
+
+block title
+  title NodeFlow - New Post
+
+block content
+  #post-form.col-sm-12
+    h1 New post
+    form.form-horizontal(action='/posts/create', method='post', role='form')
+      .form-group
+        label.col-sm-2.control-label(for='title') Title
+        .col-sm-10
+          input#title.form-control(type='text', placeholder='Title', name='title', value=(post ? post.title : ''))
+      .form-group
+        label.col-sm-2.control-label(for='description') Description
+        .col-sm-10
+          textarea#description.form-control(placeholder='Explain your link in a single paragraph', name='description', value=(post ? post.description : ''))
+      .form-group
+        label.col-sm-2.control-label(for='link') Link
+        .col-sm-10
+          input#link.form-control(type='text', placeholder='Link to post', name='link', value=(post ? post.link : ''))
+      .form-group.actions
+        button.btn(type='submit') Send
+

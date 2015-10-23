@@ -26,6 +26,7 @@ mongoose.connect(mongo_uri);
 app.use(compression({ threshold: 512 }));
 
 require('./app/models/user.js');
+require('./app/models/post.js');
 require('./config/passport')(passport);
 
 app.use('/assets', express.static(__dirname + '/app/assets'));

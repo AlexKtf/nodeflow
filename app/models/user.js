@@ -9,7 +9,8 @@ var UserSchema = mongoose.Schema({
     hashed_password: { type: String },
     salt: { type: String, default: '' },
     is_admin: { type: Boolean, default: false },
-    github_id: { type: String, default: '' }
+    github_id: { type: String, default: '' },
+    posts : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
 });
 
 /* Virtual field */

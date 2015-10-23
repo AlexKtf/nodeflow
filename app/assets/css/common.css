@@ -109,14 +109,18 @@ h2 {
 .form-horizontal .control-label {
   text-align: center;
 }
-#register-form .actions{
+#register-form .actions, #post-form .actions{
   text-align: center;
 }
-#register-form .actions button{
+#register-form .actions button, #post-form .actions button{
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   background-color: rgb(141, 206, 6);
   border-color: rgb(141, 206, 6);
   color: white;
+}
+
+#post-form textarea {
+  height: 200px;
 }
