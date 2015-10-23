@@ -20,7 +20,7 @@ var port = process.env.PORT || 3000;
 
 var mongo_uri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test';
 
-mongoose.connect();
+mongoose.connect(mongo_uri);
 
 
 app.use(compression({ threshold: 512 }));
