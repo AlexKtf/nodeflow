@@ -32,7 +32,9 @@ exports.create = function (req, res) {
 
 // Sign in user
 exports.session = function (req, res) {
-  res.redirect('/');
+  var redirectTo = req.session.returnTo ? req.session.returnTo : '/';
+  delete req.session.returnTo;
+  res.redirect(redirectTo);
 };
 
 // Logout user

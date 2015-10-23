@@ -1,36 +1,39 @@
 var homeController = require('../app/controllers/homeController');
 var usersController = require('../app/controllers/usersController');
 
+var auth = require('./authorization.js');
+
 module.exports = function (app, passport) {
+  // Home
   app.get('/', homeController.home);
 
   // Display SignIn/SignUp form
-  app.get('/register', usersController.register);
+  app.get('/register', auth.requireNoLogin, usersController.register);
 
   // Sign up
-  app.post('/users/register', usersController.create);
+  app.post('/users/register', auth.requireNoLogin, usersController.create);
 
   // Sign in
-  app.post('/users/session',
+  app.post('/users/session',[auth.requireNoLogin,
     passport.authenticate('local', {
       successRedirect: '/',
       successFlash: 'You are connected',
       failureRedirect: '/register',
       failureFlash: 'Invalid user or password'
-    }), usersController.session);
+    })], usersController.session);
 
   // Sign in with GitHub
-  app.get('/auth/github', passport.authenticate('github'));
-  app.get('/auth/callback',
+  app.get('/auth/github', auth.requireNoLogin, passport.authenticate('github'));
+  app.get('/auth/callback',[auth.requireNoLogin,
   passport.authenticate('github', {
     successRedirect: '/',
     successFlash: 'You are connected',
     failureRedirect: '/',
     failureFlash: 'Oops, an error occured'
-  }), usersController.session);
+  })], usersController.session);
 
   // Log out
-  app.get('/logout', usersController.logout);
+  app.get('/logout', auth.requireLogin, usersController.logout);
 
 
   // Handle 404/500
