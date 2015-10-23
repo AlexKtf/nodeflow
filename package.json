@@ -8,6 +8,13 @@
   },
   "author": "Alexandre Ktifa",
   "license": "ISC",
+  "engines": {
+    "node": "4.2.1"
+  },
+  "keywords": [
+    "NodeJS",
+    "LinkLog"
+  ],
   "dependencies": {
     "body-parser": "^1.14.1",
     "compression": "^1.6.0",

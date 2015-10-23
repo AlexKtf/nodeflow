@@ -18,7 +18,9 @@ var env = process.env.NODE_ENV || 'development';
 var app = express();
 var port = process.env.PORT || 3000;
 
-mongoose.connect('mongodb://localhost:27017/test');
+var mongo_uri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test';
+
+mongoose.connect();
 
 
 app.use(compression({ threshold: 512 }));
@@ -47,7 +49,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   secret: 'nodeflow',
-  store: new mongoStore({ url: 'mongodb://localhost:27017/test' })
+  store: new mongoStore({ url: mongo_uri })
 }));
 
 app.use(flash());
