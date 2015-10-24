@@ -1,0 +1,18 @@
+extends ../layouts/admin.jade
+
+block title
+  title NodeFlow - Administration
+
+block content
+  h1= title
+
+  #posts.col-md-12.col-sm-12
+    table.table
+      thead
+        tr
+          th Title
+      tbody
+        each post in posts
+          tr
+            td= post.title
+

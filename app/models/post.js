@@ -7,7 +7,8 @@ var PostSchema = mongoose.Schema({
     title: { type: String },
     description: { type: String },
     link: { type: String },
-    _author : { type: Number, ref: 'User' },
+    accepted: { type: Boolean, default: false },
+    _author : { type: Number, ref: 'User' }
 });
 
 /* Validator */

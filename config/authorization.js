@@ -11,7 +11,7 @@ exports.requireNoLogin = function (req, res, next) {
 };
 
 exports.isAdmin = function (req, res, next) {
-  if (req.user.is_admin) return next();
+  if (req.isAuthenticated() && req.user.is_admin) return next();
   req.flash('errors', "You don't have access to this page");
   res.redirect('/');
 };

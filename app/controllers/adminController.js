@@ -20,3 +20,10 @@ exports.users = function (req, res) {
     res.render('admin/users', { users: data });
   });
 };
+
+// Display posts table
+exports.posts = function (req, res) {
+  Post.find({ accepted: req.query.accepted }).exec(function(err, data){
+    res.render('admin/posts', { title: (req.query.accepted == 'true' ? 'Accepted posts' : 'Refused posts'), posts: data });
+  });
+};
