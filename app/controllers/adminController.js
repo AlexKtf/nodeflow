@@ -27,3 +27,10 @@ exports.posts = function (req, res) {
     res.render('admin/posts', { title: (req.query.accepted == 'true' ? 'Accepted posts' : 'Refused posts'), posts: data });
   });
 };
+
+// Display posts table
+exports.post = function (req, res) {
+  Post.findById(req.params.id).populate('_author').exec(function(err, post){
+    res.render('admin/post', { post: post });
+  });
+};

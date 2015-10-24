@@ -1,0 +1,20 @@
+extends ../layouts/admin.jade
+
+block title
+  title NodeFlow - Administration
+
+block content
+  #post
+    h1= post.title
+    h5.author= post._author.email
+    h5.created_at
+      = post.created_at.getDate()
+      = '/'
+      = post.created_at.getMonth()
+      = '/'
+      = post.created_at.getFullYear()
+
+    p.description= post.description
+
+    a.link(href=post.link)=post.link
+

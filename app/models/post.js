@@ -8,6 +8,7 @@ var PostSchema = mongoose.Schema({
     description: { type: String },
     link: { type: String },
     accepted: { type: Boolean, default: false },
+    created_at: { type: Date, default: Date.now() },
     _author : { type: Number, ref: 'User' }
 });
 

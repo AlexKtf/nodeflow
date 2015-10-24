@@ -134,3 +134,9 @@ h2 {
 #admin .panel-body {
   font-size: 2em;
 }
+#admin #post {
+  text-align: center;
+}
+#admin .description {
+  margin: 50px 0;
+}

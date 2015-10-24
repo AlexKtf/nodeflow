@@ -50,6 +50,8 @@ module.exports = function (app, passport) {
   app.get('/admin/users', [auth.isAdmin], adminController.users);
   // Admin posts
   app.get('/admin/posts', [auth.isAdmin], adminController.posts);
+  // Admin post details
+  app.get('/admin/posts/:id', [auth.isAdmin], adminController.post);
 
 
   // Handle 404/500
