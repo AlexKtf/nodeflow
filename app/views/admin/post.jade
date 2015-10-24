@@ -8,13 +8,28 @@ block content
     h1= post.title
     h5.author= post._author.email
     h5.created_at
+      = 'Created at : '
       = post.created_at.getDate()
       = '/'
       = post.created_at.getMonth()
       = '/'
       = post.created_at.getFullYear()
+    if post.accepted
+      h5.published_at
+        = 'Published at : '
+        = post.published_at.getDate()
+        = '/'
+        = post.published_at.getMonth()
+        = '/'
+        = post.published_at.getFullYear()
 
     p.description= post.description
 
     a.link(href=post.link)=post.link
-
+    br
+    br
+    br
+    if !post.accepted
+      form(action="/admin/posts/#{post.id}/accept", method='POST')
+        input(type="hidden", name="_method", value="PUT")
+        button.btn(type='submit') Accept

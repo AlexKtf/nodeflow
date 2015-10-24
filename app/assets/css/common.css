@@ -112,7 +112,7 @@ h2 {
 #register-form .actions, #post-form .actions{
   text-align: center;
 }
-#register-form .actions button, #post-form .actions button{
+#register-form .actions button, #post-form .actions button, #post button{
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.1em;

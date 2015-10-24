@@ -24,7 +24,8 @@ exports.users = function (req, res) {
 // Display posts table
 exports.posts = function (req, res) {
   Post.find({ accepted: req.query.accepted }).exec(function(err, data){
-    res.render('admin/posts', { title: (req.query.accepted == 'true' ? 'Accepted posts' : 'Refused posts'), posts: data });
+    title = req.query.accepted == 'true' ? 'Accepted posts' : 'Refused posts';
+    res.render('admin/posts', { title: title, posts: data });
   });
 };
 
@@ -32,5 +33,13 @@ exports.posts = function (req, res) {
 exports.post = function (req, res) {
   Post.findById(req.params.id).populate('_author').exec(function(err, post){
     res.render('admin/post', { post: post });
+  });
+};
+
+// Accept a post
+exports.acceptPost = function (req, res) {
+  Post.update({_id: req.params.id }, { $set: { accepted: true, published_at: Date.now() }}, function(err, post){
+    req.flash('success', 'This Post is now available');
+    res.redirect('/admin/posts/'+req.params.id);
   });
 };

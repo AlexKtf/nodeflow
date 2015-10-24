@@ -9,6 +9,7 @@ var PostSchema = mongoose.Schema({
     link: { type: String },
     accepted: { type: Boolean, default: false },
     created_at: { type: Date, default: Date.now() },
+    published_at: { type: Date },
     _author : { type: Number, ref: 'User' }
 });
 

@@ -45,14 +45,15 @@ module.exports = function (app, passport) {
 
 
   // Admin dashboard
-  app.get('/admin/dashboard', [auth.isAdmin], adminController.dashboard);
+  app.get('/admin/dashboard', auth.isAdmin, adminController.dashboard);
   // Admin users
-  app.get('/admin/users', [auth.isAdmin], adminController.users);
+  app.get('/admin/users', auth.isAdmin, adminController.users);
   // Admin posts
-  app.get('/admin/posts', [auth.isAdmin], adminController.posts);
+  app.get('/admin/posts', auth.isAdmin, adminController.posts);
   // Admin post details
-  app.get('/admin/posts/:id', [auth.isAdmin], adminController.post);
-
+  app.get('/admin/posts/:id', auth.isAdmin, adminController.post);
+  // Admin post accept action
+  app.put('/admin/posts/:id/accept', auth.isAdmin, adminController.acceptPost);
 
   // Handle 404/500
   app.use(function (err, req, res, next) {
