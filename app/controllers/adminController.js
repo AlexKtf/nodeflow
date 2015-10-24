@@ -13,3 +13,10 @@ exports.dashboard = function (req, res) {
     });
   });
 };
+
+// Display users table
+exports.users = function (req, res) {
+  User.find({}).exec(function(err, data){
+    res.render('admin/users', { users: data });
+  });
+};

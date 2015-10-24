@@ -17,6 +17,9 @@ html
               li
                 a(href='/register') Sign up / Sign In
             else
+              if req.user.is_admin
+                li
+                  a(href='/admin/dashboard') Admin
               li
                 a(href='/posts/new') Add post
               li

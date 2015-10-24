@@ -46,6 +46,8 @@ module.exports = function (app, passport) {
 
   // Admin dashboard
   app.get('/admin/dashboard', [auth.requireLogin, auth.isAdmin], adminController.dashboard);
+  // Admin users
+  app.get('/admin/users', [auth.requireLogin, auth.isAdmin], adminController.users);
 
 
   // Handle 404/500
