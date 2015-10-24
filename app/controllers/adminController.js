@@ -5,7 +5,7 @@ var Post = mongoose.model('Post');
 // Display admin dashboard
 exports.dashboard = function (req, res) {
   var counter = [];
-  User.count({}, function(err, count){
+  User.count({}, function (err, count){
     counter['users'] = count;
     Post.count({}, function (err, count){
       counter['posts'] = count;
@@ -23,7 +23,7 @@ exports.users = function (req, res) {
 
 // Display posts table
 exports.posts = function (req, res) {
-  Post.find({ accepted: req.query.accepted }).exec(function(err, data){
+  Post.find({ accepted: req.query.accepted }).exec(function (err, data){
     title = req.query.accepted == 'true' ? 'Accepted posts' : 'Refused posts';
     res.render('admin/posts', { title: title, posts: data });
   });
@@ -31,15 +31,23 @@ exports.posts = function (req, res) {
 
 // Display posts table
 exports.post = function (req, res) {
-  Post.findById(req.params.id).populate('_author').exec(function(err, post){
+  Post.findById(req.params.id).populate('_author').exec(function (err, post){
     res.render('admin/post', { post: post });
   });
 };
 
 // Accept a post
 exports.acceptPost = function (req, res) {
-  Post.update({_id: req.params.id }, { $set: { accepted: true, published_at: Date.now() }}, function(err, post){
+  Post.update({_id: req.params.id }, { $set: { accepted: true, published_at: Date.now() }}, function (err, post){
     req.flash('success', 'This Post is now available');
     res.redirect('/admin/posts/'+req.params.id);
+  });
+};
+
+// Destroy a post
+exports.destroyPost = function (req, res) {
+  Post.remove({ _id: req.params.id }, function (err, post){
+    req.flash('success', 'This Post is now destroyed');
+    res.redirect('/admin/posts');
   });
 };

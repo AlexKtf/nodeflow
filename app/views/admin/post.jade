@@ -29,6 +29,9 @@ block content
     br
     br
     br
+    form(action="/admin/posts/#{post.id}", method='POST')
+      input(type="hidden", name="_method", value="DELETE")
+      button.btn(type='submit') Destroy
     if !post.accepted
       form(action="/admin/posts/#{post.id}/accept", method='POST')
         input(type="hidden", name="_method", value="PUT")

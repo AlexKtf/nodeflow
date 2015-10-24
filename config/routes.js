@@ -54,6 +54,8 @@ module.exports = function (app, passport) {
   app.get('/admin/posts/:id', auth.isAdmin, adminController.post);
   // Admin post accept action
   app.put('/admin/posts/:id/accept', auth.isAdmin, adminController.acceptPost);
+  // Admin post destroy action
+  app.delete('/admin/posts/:id', auth.isAdmin, adminController.destroyPost);
 
   // Handle 404/500
   app.use(function (err, req, res, next) {
