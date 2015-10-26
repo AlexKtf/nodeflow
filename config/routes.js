@@ -9,12 +9,11 @@ module.exports = function (app, passport) {
   // Home
   app.get('/', homeController.home);
 
+
   // Display SignIn/SignUp form
   app.get('/register', auth.requireNoLogin, usersController.register);
-
   // Sign up
   app.post('/users/register', auth.requireNoLogin, usersController.create);
-
   // Sign in
   app.post('/users/session',[auth.requireNoLogin,
     passport.authenticate('local', {
@@ -23,7 +22,6 @@ module.exports = function (app, passport) {
       failureRedirect: '/register',
       failureFlash: 'Invalid user or password'
     })], usersController.session);
-
   // Sign in with GitHub
   app.get('/auth/github', auth.requireNoLogin, passport.authenticate('github'));
   app.get('/auth/callback',[auth.requireNoLogin,
@@ -33,13 +31,12 @@ module.exports = function (app, passport) {
     failureRedirect: '/',
     failureFlash: 'Oops, an error occured'
   })], usersController.session);
-
   // Log out
   app.get('/logout', auth.requireLogin, usersController.logout);
 
+
   // Display Article form
   app.get('/posts/new', auth.requireLogin, postsController.newForm);
-
   // Create Article
   app.post('/posts/create', auth.requireLogin, postsController.create);
 

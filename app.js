@@ -33,6 +33,7 @@ app.use('/assets', express.static(__dirname + '/app/assets'));
 
 app.set('views', './app/views');
 app.set('view engine', 'jade');
+app.locals.moment = require('moment');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,7 +46,7 @@ app.use(methodOverride(function (req, res) {
 }));
 
 app.use(cookieParser());
-app.use(cookieSession({ secret: 'secret' }));
+app.use(cookieSession({ secret: 'nodeflow' }));
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -57,6 +58,15 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+// Manage format request
+app.use(function (req, res, next) {
+  var format = req.query.format;
+  if (format) {
+    req.headers.accept = 'application/' + format;
+  }
+  next();
+});
 
 app.use(helpers('nodeflow'));
 
