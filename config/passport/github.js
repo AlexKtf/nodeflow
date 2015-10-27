@@ -12,7 +12,7 @@ module.exports = new GithubStrategy({
       if (err) { return done(err, user); }
       if (!user) {
         user = new User({
-          email: profile.emails[0].value,
+          username: profile.username,
           github_id: profile.id
         });
         user.save(function (err) {

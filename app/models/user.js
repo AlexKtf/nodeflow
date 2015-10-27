@@ -5,7 +5,7 @@ var validator = require('validator');
 /* Schema */
 
 var UserSchema = mongoose.Schema({
-    email: { type: String },
+    username: { type: String },
     hashed_password: { type: String },
     salt: { type: String, default: '' },
     is_admin: { type: Boolean, default: false },
@@ -26,19 +26,19 @@ UserSchema
 
 /* Validator */
 
-UserSchema.path('email').validate(function (email) {
-  return validator.isEmail(email);
-}, 'Email must be a valid email address');
+UserSchema.path('username').validate(function (username) {
+  return this.username && this.username.length;
+}, 'Username is required');
 
-UserSchema.path('email').validate(function (email, fn) {
+UserSchema.path('username').validate(function (username, fn) {
   var User = mongoose.model('User');
 
-  if (this.isNew || this.isModified('email')) {
-    User.find({ email: email }).exec(function (err, users) {
+  if (this.isNew || this.isModified('username')) {
+    User.find({ username: username }).exec(function (err, users) {
       fn(!err && users.length === 0);
     });
   } else fn(true);
-}, 'Email already exists');
+}, 'Username already exists');
 
 UserSchema.path('hashed_password').validate(function (hashed_password) {
   if (this.skipValidation()) { return true; }
