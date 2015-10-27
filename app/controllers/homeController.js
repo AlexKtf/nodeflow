@@ -16,7 +16,6 @@ exports.home = function (req, res) {
   }, function (err, posts, pageCount, itemCount){
     res.format({
       html: function(){
-        console.log(posts);
         res.render('home/home', {
           errors: req.flash('errors'),
           posts: posts,
