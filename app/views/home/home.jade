@@ -14,7 +14,11 @@ block content
       each post in posts
         .row.post
           .col-md-2.col-sm-12.image
-            img(src=post._author.avatar)
+            if post._author.github_url === ''
+              img(src=post._author.avatar)
+            else
+              a(href=post._author.github_url, target='_blank')
+                img(src=post._author.avatar)
           .col-md-10.col-sm-12.details
             h5= post.title
             a(href=post.link) Read the blog article
