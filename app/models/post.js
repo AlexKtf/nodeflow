@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 var validator = require('validator');
 
 /* Schema */
@@ -30,6 +31,10 @@ PostSchema.path('description').validate(function () {
 PostSchema.path('title').validate(function () {
   return this.title && this.title.length;
 }, 'A title is necessary');
+
+/* Plugin */
+
+PostSchema.plugin(mongoosePaginate);
 
 /* Declare model */
 

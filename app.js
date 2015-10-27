@@ -12,6 +12,7 @@ var methodOverride = require('method-override');
 var mongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 var helpers = require('view-helpers');
+var paginate = require('express-paginate');
 
 var env = process.env.NODE_ENV || 'development';
 var port = process.env.PORT || 3000;
@@ -69,6 +70,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(helpers('nodeflow'));
+app.use(paginate.middleware(1, 50));
 
 require('./config/routes')(app, passport);
 

@@ -10,6 +10,8 @@ var UserSchema = mongoose.Schema({
     salt: { type: String, default: '' },
     is_admin: { type: Boolean, default: false },
     github_id: { type: String, default: '' },
+    github_url: { type: String, default: '' },
+    avatar: { type: String, default: '/assets/default_avatar.png' },
     posts : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
 });
 
@@ -71,6 +73,7 @@ UserSchema.methods = {
     return this.github_id.length;
   }
 };
+
 
 /* Declare model */
 

@@ -13,6 +13,8 @@ module.exports = new GithubStrategy({
       if (!user) {
         user = new User({
           username: profile.username,
+          avatar: profile._json.avatar_url,
+          github_url: profile._json.html_url,
           github_id: profile.id
         });
         user.save(function (err) {
