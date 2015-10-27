@@ -11,7 +11,7 @@ var UserSchema = mongoose.Schema({
     is_admin: { type: Boolean, default: false },
     github_id: { type: String, default: '' },
     github_url: { type: String, default: '' },
-    avatar: { type: String, default: '/assets/default_avatar.png' },
+    avatar: { type: String, default: '/assets/images/default_avatar.png' },
     posts : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
 });
 
