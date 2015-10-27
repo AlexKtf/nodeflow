@@ -39,6 +39,8 @@ module.exports = function (app, passport) {
   app.get('/posts/new', auth.requireLogin, postsController.newForm);
   // Create Article
   app.post('/posts/create', auth.requireLogin, postsController.create);
+  // Display Article
+  app.get('/posts/:id', postsController.show);
 
 
   // Admin dashboard

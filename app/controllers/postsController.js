@@ -21,3 +21,10 @@ exports.create = function (req, res) {
     res.redirect('/');
   });
 };
+
+// Display a post
+exports.show = function (req, res) {
+  Post.findById(req.params.id).populate('_author').exec(function (err, post){
+    res.render('posts/show', { post: post });
+  });
+};

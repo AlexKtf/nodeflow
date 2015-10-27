@@ -20,8 +20,9 @@ block content
               a(href=post._author.github_url, target='_blank')
                 img(src=post._author.avatar)
           .col-md-10.col-sm-12.details
-            h5= post.title
-            a(href=post.link) Read the blog article
+            h5
+              a.title(href="/posts/#{post.id}")= post.title
+            a.sublink(href=post.link) Read the blog article
             p= post.description
             span.date= moment(post.published_at).format('MM/DD/YYYY')
             = ' - '
@@ -29,7 +30,7 @@ block content
               if post._author.github_url === ''
                 = post._author.username
               else
-                a(href=post._author.github_url, target='_blank')= post._author.username
+                a.sublink(href=post._author.github_url, target='_blank')= post._author.username
 
 
     include ../includes/paginate

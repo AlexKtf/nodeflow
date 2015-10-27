@@ -149,14 +149,22 @@ h2 {
   text-align: center;
 }
 
-.post h5 {
-  font-size: 2em;
-  margin-bottom: 0;
-}
-.post .details a {
+.sublink {
   color: #8CCC08;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+.sublink:hover {
+  color: #8CCC08;
+}
+.post .title{
+  color: black;
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+.post h5 a:hover{
+  color: #8CCC08;
 }
 .post .details .date {
   color: #8CCC08;
@@ -173,6 +181,25 @@ h2 {
 .post p {
   color: #666;
   margin: 10px 0;
+}
+
+.show-author {
+  text-align: center;
+}
+
+.show-author img{
+  width: 40px;
+  border-radius: 20px;
+}
+
+
+.link {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#post p {
+  text-align: justify;
 }
 
 #admin .panel {
