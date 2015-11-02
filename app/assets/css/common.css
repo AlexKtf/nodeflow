@@ -203,6 +203,18 @@ h2 {
   text-align: justify;
 }
 
+.next a, .previous a{
+  color: #8CCC08;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+}
+
+.next a:hover, .previous a:hover{
+  color: white;
+  background-color: #8CCC08 !important;
+}
+
 #admin .panel {
   text-align: center;
 }

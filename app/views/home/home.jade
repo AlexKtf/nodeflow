@@ -24,7 +24,13 @@ block content
               a.title(href="/posts/#{post.id}")= post.title
             a.sublink(href=post.link) Read the blog article
             p= post.description
-            span.date= moment(post.published_at).format('MM/DD/YYYY')
+            span.date
+              if moment(post.published_at).diff(moment(), 'days') == 0
+                = 'Today'
+              else if moment(post.published_at).diff(moment(), 'days') == 1
+                = 'Yesterday'
+              else
+                = moment(post.published_at).format('MM/DD/YYYY')
             = ' - '
             span.author
               if post._author.github_url === ''
