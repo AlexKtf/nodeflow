@@ -13,7 +13,10 @@ block content
     .show-author
       img.thumb(src=post._author.avatar)
       = ' - '
-      = post._author.username
+      if post._author.github_url === ''
+        = post._author.username
+      else
+        a.sublink(href=post._author.github_url, target='_blank')= post._author.username
 
 
 
