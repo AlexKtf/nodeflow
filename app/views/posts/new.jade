@@ -14,7 +14,9 @@ block content
       .form-group
         label.col-sm-2.control-label(for='description') Description
         .col-sm-10
-          textarea#description.form-control(placeholder='Explain your link in a single paragraph', name='description', value=(post ? post.description : ''))
+          textarea#description.form-control(placeholder='Explain your link in a single paragraph', name='description')
+            if post
+              = post.description
       .form-group
         label.col-sm-2.control-label(for='link') Link
         .col-sm-10

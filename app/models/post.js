@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate');
 var validator = require('validator');
+var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 
 /* Schema */
 
@@ -31,6 +32,22 @@ PostSchema.path('description').validate(function () {
 PostSchema.path('title').validate(function () {
   return this.title && this.title.length;
 }, 'A title is necessary');
+
+
+/* After save */
+
+PostSchema.post('save', function (post){
+  sendgrid.send({
+    to:       'alexandre.ktifa@gmail.com',
+    from:     'support@nodejsflow.com',
+    subject:  'New post',
+    text:     'A new post have just arrived'
+  }, function(err, json) {
+    if (err) { return console.error(err); }
+    console.log(json);
+  });
+});
+
 
 /* Plugin */
 
