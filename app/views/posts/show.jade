@@ -7,13 +7,13 @@ block content
 
   #post
     h1= post.title
+    .link
+      a.sublink(href=post.link) Read the blog article
+    p= post.description
     .show-author
       img.thumb(src=post._author.avatar)
       = ' - '
       = post._author.username
-    .link
-      a.sublink(href=post.link) Read the blog article
-    p= post.description
 
 
 

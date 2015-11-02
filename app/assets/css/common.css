@@ -165,6 +165,7 @@ h2 {
 
 .post h5 a:hover{
   color: #8CCC08;
+  text-decoration: none;
 }
 .post .details .date {
   color: #8CCC08;
