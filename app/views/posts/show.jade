@@ -8,7 +8,7 @@ block content
   #post
     h1= post.title
     .link
-      a.sublink(href=post.link) Read the blog article
+      a.sublink(href=post.link, target='_blank') Read the blog article
     p= post.description
     .show-author
       img.thumb(src=post._author.avatar)

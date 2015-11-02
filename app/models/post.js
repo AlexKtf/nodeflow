@@ -39,9 +39,9 @@ PostSchema.path('title').validate(function () {
 PostSchema.post('save', function (post){
   sendgrid.send({
     to:       'alexandre.ktifa@gmail.com',
-    from:     'support@nodejsflow.com',
+    from:     'NodeFlow <support@nodejsflow.com>',
     subject:  'New post',
-    text:     'A new post have just arrived'
+    text:     'A new post has just arrived'
   }, function(err, json) {
     if (err) { return console.error(err); }
     console.log(json);
