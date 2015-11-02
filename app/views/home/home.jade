@@ -22,7 +22,6 @@ block content
           .col-md-10.col-sm-12.details
             h5
               a.title(href="/posts/#{post.id}")= post.title
-
             span.date
               if moment(post.published_at).diff(moment(), 'days') == 0
                 = 'Today'
@@ -31,7 +30,7 @@ block content
               else
                 = moment(post.published_at).format('MM / DD / YYYY')
             = ' - '
-            a.sublink(href=post.link) Read the blog article
+            a.sublink(href=post.link) Read the extern post
             p= post.description
             span.author
               if post._author.github_url === ''
