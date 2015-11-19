@@ -4,11 +4,11 @@ var Post = mongoose.model('Post');
 
 // Display admin dashboard
 exports.dashboard = function (req, res) {
-  var counter = [];
+  var counter = {};
   User.count({}, function (err, count){
-    counter['users'] = count;
+    counter.users = count;
     Post.count({}, function (err, count){
-      counter['posts'] = count;
+      counter.posts = count;
       res.render('admin/dashboard', { counter: counter });
     });
   });
@@ -29,7 +29,7 @@ exports.posts = function (req, res) {
   });
 };
 
-// Display posts table
+// Display post
 exports.post = function (req, res) {
   Post.findById(req.params.id).populate('_author').exec(function (err, post){
     res.render('admin/post', { post: post });

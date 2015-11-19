@@ -46,7 +46,7 @@ PostSchema.post('save', function (post){
     to:       'alexandre.ktifa@gmail.com',
     from:     'NodeFlow <support@nodejsflow.com>',
     subject:  'New post',
-    text:     'A new post/comment has just arrived'
+    text:     'A new post has just arrived'
   }, function(err, json) {
     if (err) { return console.error(err); }
     console.log(json);
