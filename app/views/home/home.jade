@@ -37,6 +37,9 @@ block content
                 = post._author.username
               else
                 a(href=post._author.github_url, target='_blank')= post._author.username
-
+            = ' - '
+            span.comments
+              span.glyphicon.glyphicon-comment
+              = post.comments.length
 
     include ../includes/paginate

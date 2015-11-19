@@ -146,8 +146,14 @@ h2 {
 }
 
 
-.post .author a{
+.post .author a, .post .comments{
   color: #666;
+}
+
+.post .comments .glyphicon {
+  margin-right: 10px;
+  margin-left: 4px;
+  vertical-align: text-top;
 }
 
 .post .image {
