@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
+var Comment = mongoose.model('Comment');
 
 exports.newForm = function (req, res) {
   res.render('posts/new');
@@ -24,7 +25,7 @@ exports.create = function (req, res) {
 
 // Display a post
 exports.show = function (req, res) {
-  Post.findById(req.params.id).populate('_author').exec(function (err, post){
+  Post.findById(req.params.id).populate('_author comments').exec(function (err, post){
     res.render('posts/show', { post: post });
   });
 };

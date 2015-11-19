@@ -5,17 +5,16 @@ block title
 
 block content
 
-  #post
+  #post.col-md-12
     h1= post.title
     .link
-      span.date
+      .date
         if moment(post.published_at).diff(moment(), 'days') == 0
           = 'Today'
         else if moment(post.published_at).diff(moment(), 'days') == 1
           = 'Yesterday'
         else
           = moment(post.published_at).format('MM / DD / YYYY')
-      = ' - '
       a.sublink(href=post.link, target='_blank') Read the extern post
     p= post.description
     .show-author
@@ -25,6 +24,37 @@ block content
         = post._author.username
       else
         a.sublink(href=post._author.github_url, target='_blank')= post._author.username
+
+    #comments
+      h3 Comments
+      each comment in post.comments
+        .media.comment
+          .media-left
+            img.media-object(src=comment.author_avatar)
+          .media-body
+            p= comment.content
+            .comment-author
+              if comment.author_github_url === ''
+                = comment.author_name
+              else
+                a.sublink(href=post.author_github_url, target='_blank')= post.author_name
+              = ' - '
+              if moment(comment.created_at).diff(moment(), 'days') == 0
+                = 'Today'
+              else if moment(comment.created_at).diff(moment(), 'days') == 1
+                = 'Yesterday'
+              else
+                = moment(comment.created_at).format('MM / DD / YYYY')
+
+
+      h3 Post a comment
+      .col-md-12
+        form.form-horizontal(action='/posts/' + post.id + '/comments', method='post', role='form')
+          .form-group
+            textarea#content.form-control(name='content')
+          .form-group.actions
+            button.btn(type='submit') Send
+
 
 
 

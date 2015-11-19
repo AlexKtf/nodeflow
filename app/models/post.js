@@ -3,6 +3,10 @@ var mongoosePaginate = require('mongoose-paginate');
 var validator = require('validator');
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 
+var CommentSchema = mongoose.model('Comment').schema;
+
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
+
 /* Schema */
 
 var PostSchema = mongoose.Schema({
@@ -12,7 +16,8 @@ var PostSchema = mongoose.Schema({
     accepted: { type: Boolean, default: false },
     created_at: { type: Date, default: Date.now() },
     published_at: { type: Date, default: null },
-    _author : { type: Number, ref: 'User' }
+    _author : { type: Number, ref: 'User' },
+    comments : [CommentSchema]
 });
 
 /* Validator */
@@ -41,7 +46,7 @@ PostSchema.post('save', function (post){
     to:       'alexandre.ktifa@gmail.com',
     from:     'NodeFlow <support@nodejsflow.com>',
     subject:  'New post',
-    text:     'A new post has just arrived'
+    text:     'A new post/comment has just arrived'
   }, function(err, json) {
     if (err) { return console.error(err); }
     console.log(json);
@@ -52,6 +57,7 @@ PostSchema.post('save', function (post){
 /* Plugin */
 
 PostSchema.plugin(mongoosePaginate);
+PostSchema.plugin(deepPopulate);
 
 /* Declare model */
 

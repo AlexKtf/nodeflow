@@ -36,7 +36,7 @@ block content
               if post._author.github_url === ''
                 = post._author.username
               else
-                a.sublink(href=post._author.github_url, target='_blank')= post._author.username
+                a(href=post._author.github_url, target='_blank')= post._author.username
 
 
     include ../includes/paginate

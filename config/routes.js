@@ -1,6 +1,7 @@
 var homeController = require('../app/controllers/homeController');
 var usersController = require('../app/controllers/usersController');
 var postsController = require('../app/controllers/postsController');
+var commentsController = require('../app/controllers/commentsController');
 var adminController = require('../app/controllers/adminController');
 
 var auth = require('./authorization.js');
@@ -41,6 +42,10 @@ module.exports = function (app, passport) {
   app.post('/posts/create', auth.requireLogin, postsController.create);
   // Display Article
   app.get('/posts/:id', postsController.show);
+
+
+  // Create comment
+  app.post('/posts/:post_id/comments', commentsController.create);
 
 
   // Admin dashboard

@@ -7,7 +7,7 @@ exports.home = function (req, res) {
 
   Post.paginate({ published_at: { $ne: null } }, {
   page: req.query.page,
-  limit: 10,
+  limit: 3,
   populate: ['_author'],
   sortBy: {
     published_at: -1
