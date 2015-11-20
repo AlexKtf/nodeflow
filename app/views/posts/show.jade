@@ -8,7 +8,7 @@ block content
   #post.col-md-12
     h1= post.title
     .link
-      .date
+      div
         if moment(post.published_at).diff(moment(), 'days') == 0
           = 'Today'
         else if moment(post.published_at).diff(moment(), 'days') == 1
