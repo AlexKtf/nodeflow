@@ -45,8 +45,8 @@ PostSchema.post('save', function (post){
   sendgrid.send({
     to:       'alexandre.ktifa@gmail.com',
     from:     'NodeFlow <support@nodejsflow.com>',
-    subject:  'New post',
-    text:     'A new post has just arrived'
+    subject:  'New post/comment',
+    html:     "A new post/comment has just arrived on" + post.title + "<a href='http://nodejsflow.herokuapp.com/posts/" + post.id + "'></a>"
   }, function(err, json) {
     if (err) { return console.error(err); }
     console.log(json);
