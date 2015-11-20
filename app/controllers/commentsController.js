@@ -14,14 +14,21 @@ exports.create = function (req, res) {
       return res.render('posts/show', { post: post, errors: 'A content is necessary' });
     }
 
-    var comment = new Comment({
-      content: req.body.content,
-      author_name: req.user.username,
-      author_avatar: req.user.avatar,
-      author_github_url: req.user.github_url
-    });
+    if (!req.user){
+      comment = {
+        content: req.body.content
+      };
+    } else {
+      comment = {
+        content: req.body.content,
+        author_name: req.user.username,
+        author_avatar: req.user.avatar,
+        author_github_url: req.user.github_url
+      };
+    }
 
-    post.comments.push(comment);
+
+    post.comments.push(new Comment(comment));
 
     post.save(function (err){
       if (err) {
