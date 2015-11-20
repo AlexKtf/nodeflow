@@ -46,7 +46,7 @@ PostSchema.post('save', function (post){
     to:       'alexandre.ktifa@gmail.com',
     from:     'NodeFlow <support@nodejsflow.com>',
     subject:  'New post/comment',
-    html:     "A new post/comment has just arrived on" + post.title + "<a href='http://nodejsflow.herokuapp.com/posts/" + post.id + "'></a>"
+    html:     "A new post/comment has just arrived on " + post.title + " <br/> <a href='http://nodejsflow.herokuapp.com/posts/" + post.id + "'></a>"
   }, function(err, json) {
     if (err) { return console.error(err); }
     console.log(json);
