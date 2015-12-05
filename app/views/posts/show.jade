@@ -37,7 +37,7 @@ block content
               if comment.author_github_url === ''
                 = comment.author_name
               else
-                a.sublink(href=post.author_github_url, target='_blank')= post.author_name
+                a.sublink(href=comment.author_github_url, target='_blank')= comment.author_name
               = ' - '
               if moment(comment.created_at).diff(moment(), 'days') == 0
                 = 'Today'
